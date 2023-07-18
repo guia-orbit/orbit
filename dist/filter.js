@@ -122,13 +122,5 @@
       });
     }
   };
-
-  // src/index.ts
-  window["Orbit"] = window["Orbit"] || {};
-  var Orbit2 = window["Orbit"];
-  var init = () => {
-    var filter = new Filter();
-  };
-  document.addEventListener("DOMContentLoaded", init);
 })();
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=filter.js.map
