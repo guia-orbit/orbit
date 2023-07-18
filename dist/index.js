@@ -73,7 +73,6 @@
       return html;
     }
     preparePageFilterData() {
-      console.log("datefilter", "preparePageFilterData.");
       document.querySelectorAll(".w-condition-invisible").forEach((element) => {
         element.remove();
       });
@@ -88,13 +87,13 @@
             console.log(json.dates);
             var dateArray = this.getDatesList(json.dates);
             html = this.createFilterHtml(dateArray);
-            element.replaceWith(html);
+            element.outerHTML = html;
             break;
           case "range":
             json.fromDate = new Date(json.from);
             json.toDate = new Date(json.to);
             html = this.createFilterRangeHtml(json.fromDate, json.toDate);
-            element.replaceWith(html);
+            element.outerHTML = html;
             break;
           case "restricted-range":
             json.fromDate = new Date(json.from);
@@ -102,10 +101,10 @@
             console.log(json);
             var dateArray = this.getDatesByWeekdays(json.fromDate, json.toDate, json.days);
             html = this.createFilterHtml(dateArray);
-            element.replaceWith(html);
+            element.outerHTML = html;
             break;
           default:
-            console.warn(`Unknown date rule ${dateRuleType}`);
+            console.error(`Unknown date rule ${dateRuleType}`);
             break;
         }
       });

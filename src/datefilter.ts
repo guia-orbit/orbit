@@ -150,33 +150,26 @@ export class DateFilter {
         return html;  
     }
           
+    // Needs to be called each time an element is accessible
+    // for rendering in the page 
+    // May redo this to pass an individual element 
     preparePageFilterData() {
-        
-        console.log("datefilter", "preparePageFilterData.");
 
         // Remove any conditionally filtered elements permanently
         // as these will confuse FS CMS Filter
-//          $(".w-condition-invisible").remove();
-
-//          Array.from(document.querySelectorAll(".w-condition-invisible")).forEach((element: Element) => {
+        // TODO: limit to the list itself? 
         document.querySelectorAll(".w-condition-invisible").forEach((element: Element) => {
             element.remove();
         });
         
-//            Array.from(document.querySelectorAll("[date-rule]")).forEach((element: Element) => {
         document.querySelectorAll("[date-rule]").forEach((element: Element) => {
-            
-//          $("[date-rule]").each(function() {
         
-//                var $this = $(this);
             var dateRuleType = element.getAttribute("date-rule");
         
             // Skip if no content 
             if(!element.textContent)
                 return;
 
-
-//                console.log($this.text())
             var json = JSON.parse(element.textContent);
             var html;
         
@@ -187,22 +180,21 @@ export class DateFilter {
                     console.log(json.dates);
                     
                     var dateArray: Date[] = this.getDatesList(json.dates); 
-            //        console.log(dateArray);
                     
                     html = this.createFilterHtml(dateArray);
                     
                     // Replace the entire element
-                    element.replaceWith(html);
+                    element.outerHTML = html;
                     
                     break;
-                
                 case "range":
                     json.fromDate = new Date(json.from);
                     json.toDate = new Date(json.to);
             
                     html = this.createFilterRangeHtml(json.fromDate, json.toDate);
                     
-                    element.replaceWith(html);
+                    // Replace the entire element
+                    element.outerHTML = html;
                     
                     break; 
                 case "restricted-range":
@@ -212,15 +204,17 @@ export class DateFilter {
                     console.log(json);
             
                     var dateArray: Date[] = this.getDatesByWeekdays(json.fromDate, json.toDate, json.days); 
-            //        console.log(dateArray);
                     
                     html = this.createFilterHtml(dateArray);
-            
-                    element.replaceWith(html);
+
+                    // Replace the entire element
+                    element.outerHTML = html;
                     
                     break;
                 default:
-                    console.warn (`Unknown date rule ${dateRuleType}`);  
+
+                    console.error (`Unknown date rule ${dateRuleType}`);  
+
                     break;
             }
             
