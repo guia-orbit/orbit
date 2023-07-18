@@ -11,7 +11,7 @@
 window['Orbit'] = window['Orbit'] || {}; 
 var Orbit = window['Orbit'];
 
-export class Filter {
+export class DateFilter {
 
     readonly fsCmsFilterField: string = "data";
 
@@ -151,7 +151,9 @@ export class Filter {
     }
           
     preparePageFilterData() {
-    
+        
+        console.log("datefilter", "preparePageFilterData.");
+
         // Remove any conditionally filtered elements permanently
         // as these will confuse FS CMS Filter
 //          $(".w-condition-invisible").remove();
@@ -235,25 +237,10 @@ export class Filter {
     
     init() {
         
-        // Clicked on Apagar
-        // Use FS Filter reset for this field but also clear the Flatpickr element. 
+        console.log("datefilter", "init.");
 
-        // Get all elements with attribute fs-cmsfilter-reset=data
-        const elements = document.querySelectorAll("[fs-cmsfilter-reset=data]");
+        this.preparePageFilterData();
 
-        // Add click event listener to each element
-        elements.forEach((element: Element) => {
-            element.addEventListener('click', function() {
-                // Get flatpickr instance from element with id 'date'
-                const dateElement = document.getElementById('date') as any;
-                const fp = dateElement?._flatpickr;
-
-                // Clear the flatpickr instance
-                if(fp) {
-                    fp.clear();
-                }
-            });
-        });
 
     }
 

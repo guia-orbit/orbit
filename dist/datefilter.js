@@ -115,26 +115,5 @@
       this.preparePageFilterData();
     }
   };
-
-  // src/index.ts
-  window["Orbit"] = window["Orbit"] || {};
-  var Orbit2 = window["Orbit"];
-  var init = () => {
-    console.clear();
-    console.log("main", "init.");
-    var filter = new DateFilter();
-    filter.init();
-    const elements = document.querySelectorAll("[fs-cmsfilter-reset=data]");
-    elements.forEach((element) => {
-      element.addEventListener("click", function() {
-        const dateElement = document.getElementById("date");
-        const fp = dateElement?._flatpickr;
-        if (fp) {
-          fp.clear();
-        }
-      });
-    });
-  };
-  document.addEventListener("DOMContentLoaded", init);
 })();
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=datefilter.js.map

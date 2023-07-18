@@ -2,7 +2,7 @@
   // src/filter.ts
   window["Orbit"] = window["Orbit"] || {};
   var Orbit = window["Orbit"];
-  var Filter = class {
+  var DateFilter = class {
     constructor() {
       this.fsCmsFilterField = "data";
     }
