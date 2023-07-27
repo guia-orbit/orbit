@@ -1,6 +1,7 @@
 
 [filter-data] {
-/*  display: none;*/
+    //  display: none;
+    display: none; // as live 28-Jul-2023 
 }
 
 [wfu-ui-accordion=header] {
@@ -9,16 +10,16 @@
 }
 
 [wfu-ui-accordion=content] {
-    /* .accordion-content { */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-in-out;
 }
 
 @media screen and (min-width: 568px) {
+
     [wfu-ui-accordion=content] {
-    /* .accordion-content { */
-    max-height: none;
-    overflow: auto;
+        max-height: none;
+        overflow: auto;
     }
+
 }

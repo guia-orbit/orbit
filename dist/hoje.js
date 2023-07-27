@@ -1,22 +1,4 @@
 (() => {
-  // src/apagar.ts
-  var Apagar = class {
-    constructor() {
-    }
-    init() {
-      const elements = document.querySelectorAll("[fs-cmsfilter-reset=data]");
-      elements.forEach((element) => {
-        element.addEventListener("click", function() {
-          const dateElement = document.getElementById("date");
-          const fp = dateElement?._flatpickr;
-          if (fp) {
-            fp.clear();
-          }
-        });
-      });
-    }
-  };
-
   // node_modules/flatpickr/dist/esm/types/options.js
   var HOOKS = [
     "onChange",
@@ -633,7 +615,7 @@
         }
       };
     }
-    function init2() {
+    function init() {
       self.element = self.input = element;
       self.isOpen = false;
       parseConfig();
@@ -2287,7 +2269,7 @@
         input.value = pad(newValue);
       }
     }
-    init2();
+    init();
     return self;
   }
   function _flatpickr(nodeList, config) {
@@ -2387,21 +2369,5 @@
       });
     }
   };
-
-  // src/index.ts
-  var init = () => {
-    console.clear();
-    console.log("main", "init 0.1.1");
-    let datePicker = document.getElementsByClassName("date");
-    var flatpickrInstance = esm_default(datePicker, {
-      mode: "single",
-      altInput: true,
-      altFormat: "j/n/Y",
-      dateFormat: "Y-m-d"
-    });
-    new Apagar().init();
-    new Hoje().init();
-  };
-  document.addEventListener("DOMContentLoaded", init);
 })();
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=hoje.js.map

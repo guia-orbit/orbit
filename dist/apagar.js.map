@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/apagar.ts"],
+  "sourcesContent": ["\n/** \n * ORBIT \n * Apagar  \n * \n * Clear date\n * \n * Dependencies\n * - Flatpickr date field handler\n */ \n\n\nexport class Apagar {\n\n    constructor() {\n    }\n\n    // Installs apagar (clear date)\n    // handlers that clears the date using flatpickr. \n    init() {\n\n        // Clicked on Apagar\n        // Use FS Filter reset for this field but also clear the Flatpickr element. \n\n        // Get all elements with attribute fs-cmsfilter-reset=data\n        const elements = document.querySelectorAll(\"[fs-cmsfilter-reset=data]\");\n\n        // Add click event listener to each element\n        elements.forEach((element: Element) => {\n            element.addEventListener('click', function() {\n                // Get flatpickr instance from element with id 'date'\n                const dateElement = document.getElementById('date') as any;\n                const fp = dateElement?._flatpickr;\n\n                // Clear the flatpickr instance\n                if(fp) {\n                    fp.clear();\n                }\n            });\n        });\n\n    }\n\n}\n\n    \n    \n\n    \n    \n    \n    "],
+  "mappings": ";;AAYO,MAAM,SAAN,MAAa;AAAA,IAEhB,cAAc;AAAA,IACd;AAAA,IAIA,OAAO;AAMH,YAAM,WAAW,SAAS,iBAAiB,2BAA2B;AAGtE,eAAS,QAAQ,CAAC,YAAqB;AACnC,gBAAQ,iBAAiB,SAAS,WAAW;AAEzC,gBAAM,cAAc,SAAS,eAAe,MAAM;AAClD,gBAAM,KAAK,aAAa;AAGxB,cAAG,IAAI;AACH,eAAG,MAAM;AAAA,UACb;AAAA,QACJ,CAAC;AAAA,MACL,CAAC;AAAA,IAEL;AAAA,EAEJ;",
+  "names": []
+}
