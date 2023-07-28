@@ -2429,7 +2429,7 @@
 
   // src/index.ts
   var init = () => {
-    const consoleStyle = "background-color: yellow; color: red; font-weight: bold; border: padding 0 0.5rem;";
+    const consoleStyle = "background-color: #E9C46A; color: #E76F51; font-weight: bold; border: padding 0 4px;";
     console.clear();
     console.debug("%cORBIT", consoleStyle, "init 0.1.2");
     console.debug("%cORBIT", consoleStyle, "running site-wide code");
