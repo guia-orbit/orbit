@@ -44,7 +44,22 @@ export class Apagar {
 }
 
     
+/* DEPRECATED CODE
+
+
+
+// Clicked on Apagar
+// Use FS Filter reset for this field but also clear the Flatpickr element. 
+$("[fs-cmsfilter-reset=data]").click(function() {
+  
+  const fp = document.getElementById('date')._flatpickr;
+fp.clear();
     
+});
+
+
+
+*/    
 
     
     

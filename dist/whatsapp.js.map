@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/whatsapp.ts"],
+  "sourcesContent": ["\n/** \n * ORBIT \n * WhatsApp  \n * \n */ \n\n\n\nexport class WhatsApp {\n\n    constructor() {\n    }\n\n    // Installs WhatsApp link. \n    init() {\n\n        let title = document.title;\n        let url = window.location.href;\n\n        let elements = document.querySelectorAll('[data-share-whatsapp]');\n        elements.forEach((element) => {\n\n            // BUG: ?? I think this is incomplete, it may not establish the phone number to send to \n            element.setAttribute('href', 'https://wa.me/?text=' + url + \"?utm_source=siteshare\");\n            element.setAttribute('target', '_blank');\n\n        });\n\n    }\n\n}\n\n    \n    \n\n    \n    \n    \n    "],
+  "mappings": ";;AASO,MAAM,WAAN,MAAe;AAAA,IAElB,cAAc;AAAA,IACd;AAAA,IAGA,OAAO;AAEH,UAAI,QAAQ,SAAS;AACrB,UAAI,MAAM,OAAO,SAAS;AAE1B,UAAI,WAAW,SAAS,iBAAiB,uBAAuB;AAChE,eAAS,QAAQ,CAAC,YAAY;AAG1B,gBAAQ,aAAa,QAAQ,yBAAyB,MAAM,uBAAuB;AACnF,gBAAQ,aAAa,UAAU,QAAQ;AAAA,MAE3C,CAAC;AAAA,IAEL;AAAA,EAEJ;",
+  "names": []
+}

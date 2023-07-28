@@ -243,7 +243,169 @@ export class DateFilter {
     
     
 
+/* DEPRECATED CODE FROM SITE HOMEPAGE
+
+
+
+const fsCmsFilterField = "data";
+
+// Parses string date in D/M/Y format
+// Returns a date object  
+function parseDate(d) {
+  let [day, month, year] = d.split(/\/|-/).map(Number);
+  return new Date(year, month - 1, day); // JavaScript counts months from 0
+}
+
+// Returns an array of dates parsed from a text string
+// D/M/Y format, delimited by spaces, line breaks or commas 
+function getDatesList(text) {
+    var data = text; // $(this).text();
+    console.log (data);
+
+    if(!data) return null;
     
+    let dates = data; // "2023-01-01,2023-01-02,2023-01-03";
+    let dateArray = dates.split(/[\s,]+/).map(date => parseDate(date)); // new Date(date));
+
+    return dateArray;    
+}
+
+// Returns a date array for a weekday-restricted range
+function getDatesByWeekdays(start, end, weekdayNames) {
+  
+  var weekdays = weekdayNames.split(/[\s,]+/); 
+
+  const weekdayToNumber = {
+    "seg": 1,
+    "ter": 2,
+    "qua": 3,
+    "qui": 4,
+    "sex": 5,
+    "sab": 6,
+    "dom": 0,
+  };
+
+  const dates = [];
+  let currentDate = new Date(start.getTime()); // clone the date to avoid modifying original
+
+  while (currentDate <= end) {
+    if (weekdays.includes(Object.keys(weekdayToNumber)[currentDate.getDay()])) {
+      dates.push(new Date(currentDate));
+    }
+    currentDate.setDate(currentDate.getDate() + 1); // move to the next day
+  }
+
+  return dates;
+}
+
+// Create the Filter HTML for a Date Range
+function createFilterRangeHtml(dateStart, dateEnd) {
+
+  // Create list of date elements
+  let isoDateStart = dateStart.toISOString().split('T')[0] + 'T00:00:00+00:00';
+  let isoDateEnd = dateEnd.toISOString().split('T')[0] + 'T00:00:00+00:00';
+
+  // https://finsweet.com/attributes/cms-filter
+  let html = 
+      `<li>From: <span fs-cmsfilter-field="${fsCmsFilterField}" fs-cmsfilter-type="date" fs-cmsfilter-range="from">${isoDateStart}</span></li>` +
+      `<li>To: <span fs-cmsfilter-field="${fsCmsFilterField}" fs-cmsfilter-type="date" fs-cmsfilter-range="to">${isoDateEnd}</span></li>`;
+
+  html = `<div filter-data><ul>${html}</li></div>`;
+  
+  console.log(html);
+
+  return html;  
+}
+
+// Create the Filter HTML for a Date Array
+function createFilterHtml(dateArray) {
+
+  // Create list of date elements 
+  // https://finsweet.com/attributes/cms-filter
+  let htmlLines = dateArray.map(date => {
+    let isoDate = date.toISOString().split('T')[0] + 'T00:00:00+00:00';
+    return `<li>Date: <span fs-cmsfilter-field="${fsCmsFilterField}" fs-cmsfilter-type="date">${isoDate}</span></li>`;
+  });
+
+  let html = htmlLines.join('\n');
+
+  html = `<div filter-data><ul>${html}</li></div>`;
+  
+  console.log(html);
+
+  return html;  
+}
+
+
+
+
+
+$(function() {
+  
+  // Remove any conditionally filtered elements permanently
+  // as these will confuse FS CMS Filter
+  $(".w-condition-invisible").remove();
+  
+  $("[date-rule]").each(function() {
+    
+    var $this = $(this);
+    var dateRuleType = $this.attr("date-rule");
+
+    console.log($this.text())
+    var json = JSON.parse($this.text());
+    var html;
+    
+    switch(dateRuleType) {
+        
+      case "list":
+  
+        var dateArray = getDatesList(json.dates); 
+        console.log(dateArray);
+        
+        html = createFilterHtml(dateArray);
+        
+        $this.replaceWith(html);
+        
+        break;
+        
+      case "range":
+        json.fromDate = new Date(json.from);
+        json.toDate = new Date(json.to);
+
+        html = createFilterRangeHtml(json.fromDate, json.toDate);
+        
+        $this.replaceWith(html);
+        
+        break; 
+      case "restricted-range":
+        json.fromDate = new Date(json.from);
+        json.toDate = new Date(json.to);
+        
+        console.log(json);
+  
+        var dateArray = getDatesByWeekdays(json.fromDate, json.toDate, json.days); 
+        console.log(dateArray);
+        
+        html = createFilterHtml(dateArray);
+
+        $this.replaceWith(html);
+        
+        break;
+      default:
+        console.warn (`Unknown date rule ${dateRuleType}`);  
+        break;
+    }
+    
+  });
+    
+  // Temporary date picker using HTML5 
+//  $("#date1").attr("type", "date");
+  
+});
+
+
+
+*/
     
     
     

@@ -2388,19 +2388,65 @@
     }
   };
 
+  // src/whatsapp.ts
+  var WhatsApp = class {
+    constructor() {
+    }
+    init() {
+      let title = document.title;
+      let url = window.location.href;
+      let elements = document.querySelectorAll("[data-share-whatsapp]");
+      elements.forEach((element) => {
+        element.setAttribute("href", "https://wa.me/?text=" + url + "?utm_source=siteshare");
+        element.setAttribute("target", "_blank");
+      });
+    }
+  };
+
+  // src/accordion.ts
+  window["Orbit"] = window["Orbit"] || {};
+  var Orbit = window["Orbit"];
+  var Accordion = class {
+    constructor() {
+    }
+    init() {
+      const accordionBtns = document.querySelectorAll("[wfu-ui-accordion=header]");
+      accordionBtns.forEach((accordion) => {
+        accordion.onclick = function() {
+          accordion.classList.toggle("is-open");
+          let content = accordion.nextElementSibling;
+          console.log(content);
+          if (content.style.maxHeight) {
+            content.style.maxHeight = "auto";
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            console.log(content.style.maxHeight);
+          }
+        };
+      });
+    }
+  };
+
   // src/index.ts
   var init = () => {
+    const consoleStyle = "background-color: yellow; color: red; font-weight: bold; border: padding 0 0.5rem;";
     console.clear();
-    console.log("main", "init 0.1.1");
-    let datePicker = document.getElementsByClassName("date");
-    var flatpickrInstance = esm_default(datePicker, {
-      mode: "single",
-      altInput: true,
-      altFormat: "j/n/Y",
-      dateFormat: "Y-m-d"
-    });
-    new Apagar().init();
-    new Hoje().init();
+    console.debug("%cORBIT", consoleStyle, "init 0.1.2");
+    console.debug("%cORBIT", consoleStyle, "running site-wide code");
+    new WhatsApp().init();
+    console.debug("%cORBIT", consoleStyle, "running homepage code");
+    if (window.location.pathname == "/") {
+      let datePicker = document.getElementsByClassName("date");
+      var flatpickrInstance = esm_default(datePicker, {
+        mode: "single",
+        altInput: true,
+        altFormat: "j/n/Y",
+        dateFormat: "Y-m-d"
+      });
+      new Apagar().init();
+      new Hoje().init();
+      new Accordion().init();
+    }
   };
   document.addEventListener("DOMContentLoaded", init);
 })();
