@@ -13,12 +13,12 @@ var Orbit = window['Orbit'];
 
 
 // Define the type for an element with the necessary properties
-interface AccordionElement extends HTMLElement {
+interface AccordionItemElement extends HTMLElement {
     // style: {
     //     maxHeight: string | null;
     // };
     scrollHeight: number;
-    nextElementSibling: AccordionElement;
+    nextElementSibling: AccordionItemElement;
 }
 
 export class Accordion {
@@ -33,28 +33,45 @@ export class Accordion {
     // - - content panel
 
 
+    toggleItem(accordion: AccordionItemElement) {
+
+        let isOpen = accordion.classList.contains("is-open");
+        let content = accordion.nextElementSibling;
+
+        if(isOpen) {
+
+          // Close item
+          accordion.classList.remove("is-open");
+
+          // Collapse content panel
+          content.style.removeProperty("max-height"); 
+          content.style.maxHeight = "auto";
+
+        } else {
+
+          // Open item
+          accordion.classList.add("is-open");
+
+          // Expand content panel
+          content.style.maxHeight = content.scrollHeight + "px";
+  
+        }
+
+    }
+
     init() {
 
         // Find accordions
-        const accordionBtns = document.querySelectorAll("[wfu-ui-accordion=header]") as NodeListOf<AccordionElement>;
+        const accordionBtns = document.querySelectorAll("[wfu-ui-accordion=header]") as NodeListOf<AccordionItemElement>;
 
-        accordionBtns.forEach((accordion: AccordionElement) => {
+        accordionBtns.forEach((accordionItem: AccordionItemElement) => {
 
-          accordion.onclick = function () {
-            accordion.classList.toggle("is-open");
-        
-            let content = accordion.nextElementSibling;
-            console.log(content);
-        
-            if (content.style.maxHeight) {
-              //this is if the accordion is open
-              content.style.maxHeight = "auto";
-            } else {
-              //if the accordion is currently closed
-              content.style.maxHeight = content.scrollHeight + "px";
-              console.log(content.style.maxHeight);
-            }
-          };
+            accordionItem.onclick = () => {
+
+                this.toggleItem(accordionItem);
+
+            };
+
         });
 
     }

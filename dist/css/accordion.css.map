@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../src/accordion.scss"],"names":[],"mappings":"AACA;AACA;;;AAGA;EACI;EACA;;;AAGJ;AACI;EACA;EACA;EACA;;;AAGJ;EACI;AACA;IACA;IACA","file":"accordion.css"}
+{"version":3,"sourceRoot":"","sources":["../../src/accordion.scss"],"names":[],"mappings":"AACA;EAEI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EAEI;IACI;IACA","file":"accordion.css"}

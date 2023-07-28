@@ -2409,19 +2409,23 @@
   var Accordion = class {
     constructor() {
     }
+    toggleItem(accordion) {
+      let isOpen = accordion.classList.contains("is-open");
+      let content = accordion.nextElementSibling;
+      if (isOpen) {
+        accordion.classList.remove("is-open");
+        content.style.removeProperty("max-height");
+        content.style.maxHeight = "auto";
+      } else {
+        accordion.classList.add("is-open");
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    }
     init() {
       const accordionBtns = document.querySelectorAll("[wfu-ui-accordion=header]");
-      accordionBtns.forEach((accordion) => {
-        accordion.onclick = function() {
-          accordion.classList.toggle("is-open");
-          let content = accordion.nextElementSibling;
-          console.log(content);
-          if (content.style.maxHeight) {
-            content.style.maxHeight = "auto";
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            console.log(content.style.maxHeight);
-          }
+      accordionBtns.forEach((accordionItem) => {
+        accordionItem.onclick = () => {
+          this.toggleItem(accordionItem);
         };
       });
     }
