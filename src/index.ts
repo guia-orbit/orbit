@@ -21,7 +21,7 @@ const init = () => {
     const consoleStyle = "background-color: #E9C46A; color: #E76F51; font-weight: bold; border: padding 0 4px;";
 
     console.clear(); 
-    console.debug("%cORBIT", consoleStyle, "init 0.1.2");
+    console.debug("%cORBIT", consoleStyle, "init 0.1.3");
 
     //
     // Run on all pages, site-wide
