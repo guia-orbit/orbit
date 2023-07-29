@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/gratis.ts"],
+  "sourcesContent": ["\n/** \n * ORBIT \n * Gratis  \n * \n * Free events\n * \n */ \n\n\n\nexport class Gratis {\n\n    constructor() {\n    }\n\n    // Installs hoje (set date filter to today)\n    // sets the date using flatpickr. \n    init() {\n\n        // document.addEventListener('DOMContentLoaded', function() {\n        //   var button = document.getElementById('gratis-button');\n        //   button.addEventListener('click', filterAndScroll);\n        // });\n        \n        // function filterAndScroll() {\n        //   var checkbox = document.getElementById('gratis-checkbox');\n        //   checkbox.click();\n        \n        //   var container = document.getElementById('content-filter');\n        //   container.scrollIntoView({ behavior: 'smooth' });\n        // }\n\n    }\n\n}\n\n    \n    \n\n    \n    \n    \n    "],
+  "mappings": ";;AAWO,MAAM,SAAN,MAAa;AAAA,IAEhB,cAAc;AAAA,IACd;AAAA,IAIA,OAAO;AAAA,IAeP;AAAA,EAEJ;",
+  "names": []
+}
