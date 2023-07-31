@@ -10,6 +10,7 @@ import flatpickr from 'flatpickr';
 import { Hoje } from './hoje';
 import { WhatsApp } from './whatsapp'; 
 import { Accordion } from './accordion';
+import { Gratis } from './gratis';
 
 // // Global object
 // window['Orbit'] = window['Orbit'] || {}; 
@@ -62,6 +63,10 @@ const init = () => {
         // Install Hoje handler to set today's date 
         // in the date filter. 
         (new Hoje).init();
+
+        // Install Gratis button handler
+        // for free events 
+        (new Gratis).init();
         
         // Install Accordion handler
         (new Accordion).init(); 

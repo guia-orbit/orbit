@@ -2431,6 +2431,41 @@
     }
   };
 
+  // src/gratis.ts
+  var PRICE_GRATIS = "0.01";
+  var Gratis = class {
+    constructor() {
+    }
+    init() {
+      let button = document.getElementById("gratis-button");
+      button.addEventListener("click", () => {
+        let rangeSliderInput = document.querySelector("input.rangeslider_input");
+        if (rangeSliderInput)
+          rangeSliderInput.value = PRICE_GRATIS;
+        let rangeSliderHandle = document.querySelector("div[fs-rangeslider-element=handle]");
+        if (rangeSliderHandle) {
+          rangeSliderHandle.setAttribute("aria-valuenow", PRICE_GRATIS);
+          rangeSliderHandle.style.left = "0px";
+        }
+        let rangeSliderFill = document.querySelector("div[fs-rangeslider-element=fill]");
+        if (rangeSliderFill) {
+          rangeSliderFill.style.width = "0px";
+        }
+        let rangeSliderDisplayValue = document.querySelector("[fs-rangeslider-element=display-value]");
+        if (rangeSliderDisplayValue) {
+          rangeSliderDisplayValue.innerText = PRICE_GRATIS;
+        }
+        rangeSliderInput?.dispatchEvent(new Event(
+          "input",
+          { bubbles: true }
+        ));
+        let container = document.getElementById("content-filter");
+        if (container)
+          container.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  };
+
   // src/index.ts
   var init = () => {
     const consoleStyle = "background-color: #E9C46A; color: #E76F51; font-weight: bold; border: padding 0 4px;";
@@ -2449,6 +2484,7 @@
       });
       new Apagar().init();
       new Hoje().init();
+      new Gratis().init();
       new Accordion().init();
     }
   };
