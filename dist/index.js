@@ -2435,7 +2435,7 @@
   var init = () => {
     const consoleStyle = "background-color: #E9C46A; color: #E76F51; font-weight: bold; border: padding 0 4px;";
     console.clear();
-    console.debug("%cORBIT", consoleStyle, "init 0.1.3");
+    console.debug("%cORBIT", consoleStyle, "init 0.1.4");
     console.debug("%cORBIT", consoleStyle, "running site-wide code");
     new WhatsApp().init();
     console.debug("%cORBIT", consoleStyle, "running homepage code");
@@ -2445,7 +2445,7 @@
         mode: "single",
         altInput: true,
         altFormat: "j/n/Y",
-        dateFormat: "Y-m-d"
+        dateFormat: "d/m/Y"
       });
       new Apagar().init();
       new Hoje().init();

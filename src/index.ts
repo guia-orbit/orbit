@@ -21,7 +21,7 @@ const init = () => {
     const consoleStyle = "background-color: #E9C46A; color: #E76F51; font-weight: bold; border: padding 0 4px;";
 
     console.clear(); 
-    console.debug("%cORBIT", consoleStyle, "init 0.1.3");
+    console.debug("%cORBIT", consoleStyle, "init 0.1.4");
 
     //
     // Run on all pages, site-wide
@@ -53,7 +53,7 @@ const init = () => {
             mode: "single", // "range",
             altInput: true,
             altFormat: "j/n/Y",
-            dateFormat: "Y-m-d", // "Y-m-dT00:00:00+00:00", // "j/n/Y",
+            dateFormat: "d/m/Y", // "Y-m-dT00:00:00+00:00", // "j/n/Y",
         });
 
         // Install Apagar date-reset handler
